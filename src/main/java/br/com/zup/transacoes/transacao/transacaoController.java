@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 public class transacaoController {
 
@@ -18,12 +20,12 @@ public class transacaoController {
     TransacaoRepository transacaoRepository;
 
     @GetMapping("/transacoes/{idCartao}")
-    public ResponseEntity <Page<EventoTransacaoResponse>>lista(@PathVariable String idCartao,
-                                                              @PageableDefault(direction = Sort.Direction.DESC, page = 0, size = 10) Pageable paginacao) {
+    public ResponseEntity <List<EventoTransacaoResponse>>lista(@PathVariable String idCartao,
+                                                               @PageableDefault(direction = Sort.Direction.DESC, page = 0, size = 10) Pageable paginacao) {
 
 
         Page<EventoDeTransacao> transacoes = transacaoRepository.findByCartaoId(idCartao,paginacao);
 
-        return transacoes.isEmpty() ? ResponseEntity.notFound().build() : ResponseEntity.ok().body(transacoes.map(e -> new EventoTransacaoResponse(e)));
+        return transacoes.isEmpty() ? ResponseEntity.notFound().build() : ResponseEntity.ok().body(transacoes.map(e -> new EventoTransacaoResponse(e)).getContent());
     }
 }
