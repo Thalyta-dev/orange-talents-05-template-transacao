@@ -2,7 +2,6 @@ package br.com.zup.transacoes.transacao;
 
 import br.com.zup.transacoes.transacao.Cartao.Cartao;
 import br.com.zup.transacoes.transacao.Estabelecimento.Estabelecimento;
-import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -30,6 +29,22 @@ public class EventoDeTransacao {
     private LocalDateTime efetivadaEm;
 
     public EventoDeTransacao() {
+    }
+
+    public BigDecimal getValor() {
+        return valor;
+    }
+
+    public Estabelecimento getEstabelecimento() {
+        return estabelecimento;
+    }
+
+    public Cartao getCartao() {
+        return cartao;
+    }
+
+    public LocalDateTime getEfetivadaEm() {
+        return efetivadaEm;
     }
 
     public EventoDeTransacao(String id, BigDecimal valor,

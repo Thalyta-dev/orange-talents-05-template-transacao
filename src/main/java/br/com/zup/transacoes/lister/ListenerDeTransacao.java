@@ -15,9 +15,6 @@ public class ListenerDeTransacao {
 
     @KafkaListener(topics = "${spring.kafka.topic.transactions}")
     public void ouvir(EventoDeTransacaoRequest eventoDeTransacao) {
-
-        System.out.println("recebeu");
         transacaoRepository.save(eventoDeTransacao.toModel());
-        System.out.println("recebeu");
     }
 }

@@ -5,7 +5,6 @@ import br.com.zup.transacoes.transacao.Cartao.CartaoRequest;
 import br.com.zup.transacoes.transacao.Estabelecimento.Estabelecimento;
 import br.com.zup.transacoes.transacao.Estabelecimento.EstabelecimentoRequest;
 
-import javax.persistence.ManyToOne;
 import javax.validation.constraints.Positive;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;

@@ -25,5 +25,7 @@ public class Cartao {
         this.email = email;
     }
 
-
+    public String getEmail() {
+        return email;
+    }
 }
